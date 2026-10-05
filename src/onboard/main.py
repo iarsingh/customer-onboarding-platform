@@ -1,7 +1,9 @@
+from onboard.ops import router as ops_router
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI(title="Customer onboarding")
+app.include_router(ops_router, prefix="/v1")
 GATES = ("sso", "backup", "network_policy", "audit")
 
 
