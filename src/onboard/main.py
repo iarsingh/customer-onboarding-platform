@@ -17,3 +17,8 @@ def review(body: Onboarding):
     missing = [gate for gate in GATES if body.gates.get(gate) is not True]
     status = "ready_for_human" if not missing else "blocked"
     return {"customer": body.customer, "status": status, "missing": missing, "live": False}
+
+
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok"}
