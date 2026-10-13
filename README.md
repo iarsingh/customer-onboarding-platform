@@ -1,5 +1,12 @@
 # Customer onboarding and deployment platform
 
+## Overview
+
+An onboarding API that keeps a customer tenant blocked until four security gates pass: SSO, backup, network policy and audit. If any gate is missing, `POST /onboarding` returns `blocked` with the name of the missing gate. Even when every gate passes, `live` stays false and the status is `ready_for_human`, so a person still decides when the tenant goes live. A versioned `/v1` ops API adds workspaces, tenant isolation, job approval and audit records.
+
+- **Built with:** Python, pytest, Docker, GitHub Actions
+- **Scope:** Local lab with tests; this API never turns a tenant on and refuses production apply.
+
 <!-- project-guide:start -->
 ## Project guide
 
